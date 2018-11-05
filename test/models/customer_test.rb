@@ -59,7 +59,6 @@ describe Customer do
 
   describe 'Relationships' do
     # has_many :rentals
-    # has_many :movies, through: :rentals
     it 'can have many rentals' do
       customer.rentals << rentals(:rental1)
       customer.rentals << rentals(:rental2)
@@ -68,7 +67,25 @@ describe Customer do
       expect(rentals.length).must_be :>=, 2
       rentals.each do |rental|
         expect(rental).must_be_instance_of Rental
-      end 
+      end
+
+    end
+
+    it 'can have many movies through rentals' do
+      # has_many :movies, through: :rentals
+      customer.rentals << rentals(:rental1)
+      customer.rentals << rentals(:rental2)
+      rentals = customer.rentals
+
+      customer_movies = []
+      rentals.each do |rental|
+        customer_movies << rental.movie
+      end
+
+      expect(customer_movies.length).must_be :>=, 2
+      customer_movies.each do |movie|
+        expect(movie).must_be_instance_of Movie
+      end
 
     end
   end
