@@ -55,22 +55,22 @@ describe Customer do
       expect(valid).must_equal false
       expect(customer.errors.messages).must_include :movies_checked_out_count
     end
+  end
 
+  describe 'Relationships' do
+    # has_many :rentals
+    # has_many :movies, through: :rentals
+    it 'can have many rentals' do
+      customer.rentals << rentals(:rental1)
+      customer.rentals << rentals(:rental2)
+      rentals = customer.rentals
+
+      expect(rentals.length).must_be :>=, 2
+      rentals.each do |rental|
+        expect(rental).must_be_instance_of Rental
+      end 
+
+    end
   end
 
 end
-
-
-# describe 'Validations' do
-#
-# end
-
-
-
-#
-# validates :id, presence: true
-# validates :name, presence: true
-# validates :registered_at, presence: true
-# validates :postal_code, presence: true
-# validates :phone, presence: true
-# validates :movies_checked_out_count, presence: true
