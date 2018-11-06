@@ -4,4 +4,9 @@ class Movie < ApplicationRecord
   # validates :id, presence: true
   validates :title, presence: true
   validates :release_date, presence: true
+
+  #create method to subtract current inventory for each rental
+
+
+
 end
