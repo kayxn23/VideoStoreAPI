@@ -3,16 +3,16 @@
 movie1:
   title: title1
   release_date: releasedate1
+  overview: so great
+  inventory: 10
 
 
 movie2:
   title: title2
   release_date: releasedate2
+  overview: so background
+  inventory: 2
 
 
 
-  # has_many :rentals
-  # has_many :customers, through: :rentals
-  # # validates :id, presence: true
-  # validates :title, presence: true
-  # validates :release_date, presence: true
+  

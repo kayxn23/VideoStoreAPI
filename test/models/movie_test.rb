@@ -28,12 +28,47 @@ describe Movie do
       expect(movie.errors.messages).must_include :title
     end
 
-    it 'must have registered_at ' do
+    it 'must have release_date ' do
       movie.release_date = nil
 
       valid = movie.save
       expect(valid).must_equal false
       expect(movie.errors.messages).must_include :release_date
+    end
+
+    it 'must have overview' do
+      movie.overview = nil
+
+      valid = movie.save
+      expect(valid).must_equal false
+      expect(movie.errors.messages).must_include :overview
+    end
+
+    it 'must have inventory' do
+      movie.inventory = nil
+
+      valid = movie.save
+      expect(valid).must_equal false
+      expect(movie.errors.messages).must_include :inventory
+
+    end
+
+    it 'requires inventory to be an integer' do
+      movie.inventory = "string"
+
+      valid = movie.save
+      expect(valid).must_equal false
+      expect(movie.errors.messages).must_include :inventory
+
+    end
+
+    it 'requires an integer that is greater than 0' do
+      movie.inventory = -2
+
+      valid = movie.save
+      expect(valid).must_equal false
+      expect(movie.errors.messages).must_include :inventory
+
     end
 
   end #end of validations block
