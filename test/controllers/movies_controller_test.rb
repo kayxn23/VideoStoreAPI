@@ -84,7 +84,8 @@ describe MoviesController do
           title: "Jack the Movie",
           overview: "A cool movie",
           release_date: "Oct 23 2018",
-          inventory: 10
+          inventory: 10,
+          available_inventory: 10
         }
       }
 

@@ -5,6 +5,7 @@ movie1:
   release_date: releasedate1
   overview: so great
   inventory: 10
+  available_inventory: 10
 
 
 movie2:
@@ -12,7 +13,4 @@ movie2:
   release_date: releasedate2
   overview: so background
   inventory: 2
-
-
-
-  
+  available_inventory: 2
