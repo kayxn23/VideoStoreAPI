@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
       render json: { ok: false, message: "not found"},
       status: :not_found
     else
-      render json: movie.as_json(only: [:title, :overview, :inventory]),
+      render json: movie.as_json(only: [:title, :overview, :inventory, :release_date, :available_inventory]),
        status: :ok
       end
     end
@@ -36,5 +36,5 @@ class MoviesController < ApplicationController
         def movie_params
           params.permit(:title, :overview, :inventory, :release_date, :available_inventory)
         end
-#comment
+
       end
