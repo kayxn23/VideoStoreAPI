@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
 
     def create
       movie = Movie.new(movie_params)
+
       if movie.save
         render json: movie.as_json(only: [:id]),
            status: :ok
@@ -34,7 +35,7 @@ class MoviesController < ApplicationController
         private
 
         def movie_params
-          params.require(:movie).permit(:title, :overview, :inventory, :release_date, :available_inventory)
+          params.permit(:title, :overview, :inventory, :release_date, :available_inventory)
         end
 
       end
