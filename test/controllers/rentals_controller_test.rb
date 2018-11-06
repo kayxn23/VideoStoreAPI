@@ -20,9 +20,8 @@ describe RentalsController do
     let(:rental_data) {
       {
         customer_id: 1,
-        movie_id: 2,
-        checkout_date: Date.today,
-        due_date: 10
+        movie_id: 2
+
       }
     }
 

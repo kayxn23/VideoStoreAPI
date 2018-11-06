@@ -1,15 +1,23 @@
 class RentalsController < ApplicationController
   def checkout
 
-    rental = Rental.new(rental_params)
-    customer = Customer.find_by(id: params[:id])
-    movie = Movie.find_by(id: params[:id])
-    rental.customer_id = customer.id
-    rental.movie_id = movie.id
-    
-    rental.checkout_date = Date.today
-    rental.due_date = Date.today + 7
+    movie = Movie.find_by(id: params[:movie_id])
+    customer = Customer.find_by(id: params[:customer_id])
 
+    rental = Rental.new(customer: customer, movie: movie,
+      checkout_date: Date.today, due_date: Date.today + 7)
+
+
+
+    # rental = Rental.new(rental_params)
+    # customer = Customer.find_by(id: params[:id])
+    # movie = Movie.find_by(id: params[:id])
+    # rental.customer_id = customer.id
+    # rental.movie_id = movie.id
+    #
+    # rental.checkout_date = Date.today
+    # rental.due_date = Date.today + 7
+    #
     if rental.save
       render json: rental.as_json(only: [:customer_id, :movie_id]),
       status: :ok
