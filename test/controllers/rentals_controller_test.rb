@@ -27,24 +27,10 @@ describe RentalsController do
       body = JSON.parse(response.body)
 
       expect(body).must_be_kind_of Hash
-<<<<<<< HEAD
-      # expect(body[“rental”]).must_include “id”
-      expect(Rental.last.customer_id).must_equal body["customer_id"]
-      expect(Rental.last.movie_id).must_equal body["movie_id"]
-      must_respond_with :success
-
-    end
-
-    it "is invalid with a missing param" do
-      expect {
-        post checkout_path, params: { customer_id: customer1.id, movie_id: -1 }
-      }.wont_change "Rental.count"
-=======
       # expect(body["rental"]).must_include "id"
       expect(Rental.last.customer_id).must_equal body["customer_id"]
       expect(Rental.last.movie_id).must_equal body["movie_id"]
       must_respond_with :success
->>>>>>> 6fc37bb360aa1d8628d7bb4880497f0b366ad28b
 
       must_respond_with :bad_request
     end
