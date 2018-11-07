@@ -13,6 +13,8 @@ class RentalsController < ApplicationController
       rental = Rental.new(customer_id: @customer.id, movie_id: @movie.id,
         checkout_date: Date.today, due_date: Date.today + 7)
       rental.save
+      @customer.movies_checked_out_count += 1
+      @customer.save
       if rental
         render json: rental.as_json(only: [:customer_id, :movie_id]),
         status: :ok
