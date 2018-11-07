@@ -68,6 +68,8 @@ describe RentalsController do
 
     expect(Rental.last.movie.available_inventory).must_equal 10
     expect(Rental.last.customer.movies_checked_out_count).must_equal 0
+    
+    must_respond_with :success
     end
 
     it "won't checkin a rental and change movie inventory stays the same for invalid params" do

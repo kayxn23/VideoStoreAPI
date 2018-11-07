@@ -7,7 +7,7 @@ class RentalsController < ApplicationController
 
     if @movie.nil? || @customer.nil?
       render json: {
-        ok: false, message: "not found"
+        ok: false, message: "The movie or customer you entered is not valid"
         }, status: :bad_request
     else
       rental = Rental.new(customer_id: @customer.id, movie_id: @movie.id,
@@ -25,7 +25,7 @@ class RentalsController < ApplicationController
       else
         render json: {
           ok: false,
-          message: "not found"
+          message: "Your movie was not saved, please make sure you enter a valid movie or customer"
           }, status: :bad_request
         end
       end
@@ -54,7 +54,7 @@ class RentalsController < ApplicationController
         else
           render json: {
             ok: false,
-            message: "not found"
+            message: "Your rental was not returned please make sure your movie and customer are correct"
             }, status: :bad_request
         end
       end
