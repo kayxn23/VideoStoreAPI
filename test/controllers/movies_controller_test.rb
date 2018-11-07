@@ -91,16 +91,15 @@ describe MoviesController do
 
       it "creates a new movie given valid data" do
         expect {
-        post movies_path, params: { movie: movie_data }
+        post movies_path, params: movie_data
       }.must_change "Movie.count", 1
 
         body = JSON.parse(response.body)
 
         expect(body).must_be_kind_of Hash
-        expect(body["movie"]).must_include "id"
+        expect(body).must_include "id"
 
-        movie = Movie.find(body["movie"]["id"].to_i)
-
+        movie = Movie.find(body["id"].to_i)
         expect(movie.title).must_equal movie_data[:title]
         must_respond_with :success
 
