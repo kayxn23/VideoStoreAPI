@@ -7,7 +7,7 @@ class RentalsController < ApplicationController
 
     if @movie.nil? || @customer.nil?
       render json: {
-        ok: false, message: "not found"
+        ok: false, message: "Movie with id '#{rental_params[:movie_id]}' or customer with id '#{rental_params[:customer_id]}' not found"
         }, status: :bad_request
     else
       rental = Rental.new(customer_id: @customer.id, movie_id: @movie.id,
