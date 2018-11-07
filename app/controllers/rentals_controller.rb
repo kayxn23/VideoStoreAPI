@@ -1,11 +1,15 @@
+
+
 class RentalsController < ApplicationController
   def checkout
 
-    movie = Movie.find_by(id: params[:movie_id])
-    customer = Customer.find_by(id: params[:customer_id])
+    @movie = Movie.find_by(id: rental_params[:movie_id])
+    @customer = Customer.find_by(id: rental_params[:customer_id])
 
-    rental = Rental.new(customer: customer, movie: movie,
+    rental = Rental.new(customer_id: @customer.id, movie_id: @movie.id,
       checkout_date: Date.today, due_date: Date.today + 7)
+      binding.pry
+      rental.save
 
 
 

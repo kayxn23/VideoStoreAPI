@@ -17,23 +17,20 @@ describe RentalsController do
 
 
   describe "create (checkout)" do
-    let(:rental_data) {
-      {
-        customer_id: 1,
-        movie_id: 2
+    let(:customer1) {customers(:customer1)}
+    let(:movie1) {movies(:movie1)}
 
-      }
-    }
 
     it "creates a new rental given valid data" do
+
       expect {
-      post checkout_path, params: { rental: rental_data }
+      post checkout_path, params: { customer_id: customer1.id, movie_id: movie1.id }
     }.must_change "Rental.count", 1
 
       body = JSON.parse(response.body)
 
       expect(body).must_be_kind_of Hash
-      expect(body["rental"]).must_include "id"
+      # expect(body["rental"]).must_include "id"
 
       rental = Rental.find(body["rental"]["id"].to_i)
 
