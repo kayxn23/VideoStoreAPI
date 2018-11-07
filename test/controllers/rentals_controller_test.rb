@@ -31,10 +31,8 @@ describe RentalsController do
 
       expect(body).must_be_kind_of Hash
       # expect(body["rental"]).must_include "id"
-
-      rental = Rental.find(body["rental"]["id"].to_i)
-
-      expect(rental.customer_id).must_equal rental_data[:customer_id]
+      expect(Rental.last.customer_id).must_equal body["customer_id"]
+      expect(Rental.last.movie_id).must_equal body["movie_id"]
       must_respond_with :success
 
     end

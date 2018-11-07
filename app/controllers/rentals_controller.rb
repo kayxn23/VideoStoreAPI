@@ -8,7 +8,6 @@ class RentalsController < ApplicationController
 
     rental = Rental.new(customer_id: @customer.id, movie_id: @movie.id,
       checkout_date: Date.today, due_date: Date.today + 7)
-      binding.pry
       rental.save
 
 
