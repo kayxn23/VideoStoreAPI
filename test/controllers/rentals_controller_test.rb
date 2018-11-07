@@ -30,6 +30,9 @@ describe RentalsController do
           # expect(body[“rental”]).must_include “id”
           expect(Rental.last.customer_id).must_equal body["customer_id"]
           expect(Rental.last.movie_id).must_equal body["movie_id"]
+          expect(Rental.last.customer.movies_checked_out_count).must_equal 1
+          expect(Rental.last.movie.available_inventory).must_equal 9
+
           must_respond_with :success
 
         end
