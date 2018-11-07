@@ -105,6 +105,7 @@ describe MoviesController do
 
       end
 
+
       it "returns an error for invalid movie data" do
         # arrange
         movie_data["title"] = nil
