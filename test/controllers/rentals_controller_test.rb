@@ -70,6 +70,30 @@ describe RentalsController do
     expect(Rental.last.customer.movies_checked_out_count).must_equal 0
     end
 
+    it "won't checkin a rental and change movie inventory stays the same for invalid params" do
+      post checkout_path, params: { customer_id: customer1.id, movie_id: movie1.id }
+      expect(Rental.last.movie.available_inventory).must_equal 9
+
+      expect {
+        post checkin_path, params: { customer_id: -1, movie_id: movie1.id }
+      }.wont_change "Rental.count"
+
+      expect(Rental.last.movie.available_inventory).must_equal 9
+      must_respond_with :bad_request
+    end
+
+    it "won't checkin a rental and change movie inventory stays the same for invalid params" do
+      post checkout_path, params: { customer_id: customer1.id, movie_id: movie1.id }
+      expect(Rental.last.movie.available_inventory).must_equal 9
+
+      expect {
+        post checkin_path, params: { customer_id: customer1.id, movie_id: -1 }
+      }.wont_change "Rental.count"
+
+      expect(Rental.last.movie.available_inventory).must_equal 9
+      must_respond_with :bad_request
+    end
+
   end
 
 
