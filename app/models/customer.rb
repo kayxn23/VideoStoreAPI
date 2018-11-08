@@ -8,6 +8,4 @@ class Customer < ApplicationRecord
   validates :phone, presence: true
   validates :movies_checked_out_count, presence: true
 
-
-
 end
