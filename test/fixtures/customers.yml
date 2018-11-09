@@ -1,15 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 customer1:
-  name: customer1
+  name: Zberry
   registered_at: <Date:0x9d80730>
   postal_code: postalcode1
   phone: phone1
   movies_checked_out_count: 0
 
 customer2:
-  name: customer1
+  name: Aberry
   registered_at: <Date:0x9d80730>
   postal_code: postalcode1
   phone: phone1
   movies_checked_out_count: 0
+
+customer3:
+  name: Corange
+  registered_at: <Date:0x9d80730>
+  postal_code: postalcode1
+  phone: phone1
+  movies_checked_out_count: 0
+
+# customer4:
+#   name: Apple
+#   registered_at: <Date:0x9d80730>
+#   postal_code: postalcode1
+#   phone: phone1
+#   movies_checked_out_count: 0
+#
+# customer5:
+#   name: Cranberry
+#   registered_at: <Date:0x9d80730>
+#   postal_code: postalcode1
+#   phone: phone1
+#   movies_checked_out_count: 0

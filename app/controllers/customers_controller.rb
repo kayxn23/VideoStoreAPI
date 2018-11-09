@@ -1,3 +1,4 @@
+require 'pry'
 class CustomersController < ApplicationController
 
   SORTABLE_ATTRIBUTES = [:name, :registered_at, :postal_code]
@@ -21,5 +22,5 @@ class CustomersController < ApplicationController
     status: :ok
 
   end
-  
+
 end

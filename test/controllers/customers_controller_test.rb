@@ -27,6 +27,36 @@ describe CustomersController do
       # Assert
       expect(body).must_be_kind_of Array
     end
+    # if params[:sort].present? && SORTABLE_ATTRIBUTES.include?(params[:sort].to_sym)
+    #   customers = customers.order(params[:sort].to_sym => :asc)
+    # end
+
+
+    it "returns an Array of customers' names in ascending order given valid optional param" do
+      # Act
+      # get customers_path
+      # expect(Customer.last.id).must_equal 344919985
+
+      get customers_path({"sort" => "name"})
+      body = JSON.parse(response.body)
+
+      last_id = body[2]["id"]
+
+      expect(Customer.last.id).must_equal last_id
+
+      # Assert
+      expect(body).must_be_kind_of Array
+    end
+
+    it "(still)returns an Array of customers when passed invalid optional param" do
+      # Act
+      get customers_path({"sort" => "bogus"})
+      body = JSON.parse(response.body)
+
+      # Assert
+      expect(body).must_be_kind_of Array
+    end
+
 
     it "returns all of the customers" do
       # Act
